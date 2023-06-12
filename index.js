@@ -12,7 +12,7 @@ app.use(express.json());
 app.use(cors());
 
 app.post('/sendemail', (req, res) => {
-  const { fullname, nationality, email, message } = req.body.data;
+  // const {  nationality, email, message } = req.body.data;
 
 
   console.log('====================================');
@@ -31,8 +31,8 @@ app.post('/sendemail', (req, res) => {
   const mailOptions = {
     from: email,
     to: 'mootassame@gmail.com',
-    subject: fullname,
-    text: message,
+    subject: "fullname",
+    text: "message",
   };
 
   transporter.sendMail(mailOptions, (error, info) => {
