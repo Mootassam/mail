@@ -12,27 +12,29 @@ app.use(express.json());
 app.use(cors());
 
 app.post('/sendemail', (req, res) => {
-  // const {  nationality, email, message } = req.body.data;
-
 
   console.log('====================================');
-  console.log(email);
+  console.log(req.body.data.message);
+  console.log('====================================');
+  // const {  nationality, email, message } = req.body.data;
+  console.log('====================================');
+  
   console.log('====================================');
   const transporter = nodemailer.createTransport({
     host: 'ssl0.ovh.net',
     port: 465,
     secure: true,
     auth: {
-      user: 'info@soa-senina.com',
-      pass: 'soasenina2022',
+      user: 'info@cerra-plomberie.fr',
+      pass: 'cerra2022',
     },
   });
 
   const mailOptions = {
-    from: email,
+    from: req.body.data.email,
     to: 'mootassame@gmail.com',
-    subject: "fullname",
-    text: "message",
+    subject: req.body.data.fullname,
+    text: req.body.data.message,
   };
 
   transporter.sendMail(mailOptions, (error, info) => {
